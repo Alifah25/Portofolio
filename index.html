@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>Portofolio</title>
+    <style>
+        .home {
+            height: 100vh;
+            width: 100%;
+            background-image: url('https://img.freepik.com/free-vector/aesthetic-dreamy-background-purple-cloudy-sky-vector-glitter-design_53876-156334.jpg');
+            background-size: cover;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            /* Ensure navbar stays above other elements */
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+        }
+
+        .menu-toggle {
+            display: flex;
+            /* Initially hide the menu toggle on larger screens */
+            cursor: pointer;
+            border: none;
+            background-color: black;
+        }
+
+        .menu-toggle i {
+            font-size: 20px;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                /* Hide navigation links on smaller screens */
+            }
+
+            .menu-toggle {
+                display: block;
+                /* Show menu toggle on smaller screens */
+            }
+        }
+
+
+        .image {
+            width: 50%;
+            height: 90%;
+            position: absolute;
+            left: 30px;
+            transform: rotate(180deg);
+        }
+
+        .image img {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 23%;
+            transform: translateX(20%);
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translateY(-50%);
+        }
+
+        .content button {
+            font-size: 20px;
+            color: white;
+            background-color: blueviolet;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid white;
+        }
+
+        .hamburger {
+            display: inline-block;
+        }
+
+        .about {
+            width: 100%;
+            padding: 100px 0;
+        }
+
+        .aboutme {
+            width: 1130px;
+            max-width: 95%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .aboutme img {
+            height: auto;
+            width: 430px;
+            border-radius: 10px;
+        }
+
+        .abouttext {
+            width: 550px;
+        }
+
+        .abouttext h1 {
+            color: blueviolet;
+            font-size: 50px;
+        }
+
+        .abouttext h5 {
+            color: black;
+            font-size: 30px;
+        }
+
+        .abouttext p {
+            color: black;
+            font-size: 18px;
+            letter-spacing: 1px;
+            line-height: 28px;
+            margin-bottom: 45px;
+            text-align: justify;
+        }
+
+        .abouttext button {
+            font-size: 15px;
+            color: black;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 3px solid blueviolet;
+            margin-top: -50px;
+        }
+
+        .portofolio {
+            width: 100%;
+            padding: 100px 0;
+            width: 1130px;
+            max-width: 95%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .port h1 {
+            color: blueviolet;
+            font-size: 50px;
+        }
+
+        .port h5 {
+            color: black;
+            font-size: 30px;
+        }
+
+        .port img {
+            height: auto;
+            width: 430px;
+            border-radius: 10px;
+        }
+
+        .contact {
+            width: 100%;
+            padding: 100px 0;
+            width: 1130px;
+            max-width: 95%;
+            margin: 20px auto 0px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .contact .container h5 {
+            color: blueviolet;
+            font-size: 50px;
+        }
+
+        .contact .container p {
+            color: black;
+            font-size: 30px;
+        }
+
+        .footer .box {
+            padding: .7rem 0;
+            color: black;
+            width: 95%;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+        }
+
+        .footer .box h3 {
+            font-size: 20px;
+        }
+
+        .footer .box a {
+            text-decoration: none;
+            font-size: 15px;
+            color: blueviolet;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home" id="content">
+        <nav>
+            <h3 class="logo">Portofolio</h3>
+            <div class="menu"></div>
+            <ul class="nav-links">
+                <li><a href="#content" class="btn btn-transparant">Home</a></li>
+                <li><a href="#about" class="btn btn-transparant">About</a></li>
+                <li><a href="#portofolio" class="btn btn-transparant">Portofolio</a></li>
+                <li><a href="#contact" class="btn btn-transparant">Contact</a></li>
+            </ul>
+    </div>
+
+    </nav>
+    </div>
+
+    <div class="content">
+        <h1>ALIFAH</h1>
+        <h5>I'am a student LearningX Full Stack web Dev Group 4</h5>
+        <button type="button" class="btn btn-outline-primary">Visit My Works</button>
+    </div>
+
+    <section class="about" id="about">
+        <div class="aboutme">
+            <img src="a1.jpg">
+            <div class="abouttext">
+                <h5>who am i?</h5>
+                <h1>About Me</h1>
+                <p>I am a passionate, self-motivated, reliable, responsible and hard worker who can excel under pressure
+                    and meet tight deadlines. As an informatics engineer, I find programming interesting because
+                    programming gives me the opportunity to sharpen my mind, develop practical problem solving,
+                    strengthen my understanding and deepen my experience in the entire field of engineering informatics.
+                    I am a 6th semester student in the Informatics Engineering Study Program at Yudharta University,
+                    Pasuruan. And currently, I am taking part in the MBKM program at LX International partners. </p>
+                <button type="button" class="btn btn-outline-primary">Download my CV</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="portofolio" id="portofolio">
+        <div class="port text-center">
+            <h5>What i did?</h5>
+            <h1>Portofolio</h1>
+            <img src="a2.png">
+            <p>Tugas ini adalah tugas awal membuat proyek mata kuliah pemrograman web dasar</p>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container text-center">
+            <p> How can you communicate?</p>
+            <h5>Contact Me</h5>
+            <form action class="contact-form col-md-10 col-lg-8 m-auto">
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <input type="email" class="form-control" placeholder="Enter Your Name" required>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <textarea type="comment" id="comment" rows="6" class="form-control"
+                            placeholder="Write Something"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div class="footer" id="footer">
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">Telegram</a>
+        </div>
+    </div>
+</body>
+
+</html>
